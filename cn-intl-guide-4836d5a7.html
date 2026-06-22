@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 全球视野 · 世界杯专题</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: #f4f6fa;
+            color: #1a1e24;
+            line-height: 1.6;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            background: #0b1a2e;
+            color: #dfe6ed;
+            padding: 0.9rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #dc7f3b;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            color: #f0e6d3;
+        }
+
+        .nav-brand span {
+            color: #e88d4a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #d4dee8;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #f0b27a;
+        }
+
+        /* 深色头图区 (hero) */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #142b44 60%, #1d3b5a 100%);
+            color: #edf2f7;
+            padding: 5rem 5% 4.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #dc7f3b;
+            margin: 2rem auto 0;
+            border-radius: 3px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 1rem auto 0.5rem;
+            font-size: 1.1rem;
+            color: #c8d6e5;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: #b0c9dd;
+            border-top: 1px solid rgba(220,127,59,0.3);
+            display: inline-block;
+            padding-top: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        /* 正文浅色区容器 */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 2.5rem 5%;
+        }
+
+        /* 核心介绍（概要） */
+        .intro-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: #ffffff;
+            padding: 2rem 2.5rem;
+            border-radius: 28px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .intro-text {
+            flex: 2 1 300px;
+        }
+
+        .intro-text h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            border-left: 5px solid #dc7f3b;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            color: #0b1a2e;
+        }
+
+        .intro-text p {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .intro-highlight {
+            background: #f0f4fb;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .intro-highlight a {
+            color: #c76a2a;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .intro-highlight a:hover {
+            color: #a3521d;
+        }
+
+        /* 三个场景模块 (卡片) */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 3.5rem;
+        }
+
+        .scene-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #e9edf4;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #102a3f;
+        }
+
+        .scene-card h3 span {
+            background: #dc7f3b;
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 40px;
+            padding: 0.1rem 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .scene-card p {
+            color: #3a4b5c;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .scene-card .meta {
+            font-size: 0.85rem;
+            color: #7c8b9b;
+            border-top: 1px dashed #dce3ec;
+            padding-top: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0 3rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+        }
+
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0b1a2e;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1d3b5a;
+            margin-bottom: 0.35rem;
+        }
+
+        .faq-item p {
+            color: #3f5368;
+            font-size: 0.95rem;
+        }
+
+        .faq-item a {
+            color: #b45f2a;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .faq-item a:hover {
+            color: #8e4b1d;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #0b1a2e;
+            color: #9aafc4;
+            text-align: center;
+            padding: 2rem 5% 1.8rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #1f3a55;
+        }
+
+        .footer a {
+            color: #e7a266;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+            .intro-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .faq-summary {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.9rem 4%;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav class="nav">
+    <div class="nav-brand">GLOBAL<span>26</span></div>
+    <ul class="nav-links">
+        <li><a href="#">赛事</a></li>
+        <li><a href="#">情报</a></li>
+        <li><a href="#">观赛</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+</nav>
+
+<!-- 深色头图 -->
+<header class="hero">
+    <h1>世界杯 · 2026 格局</h1>
+    <p>从赛程架构到区域预选，从球场技术到球迷文化——全面聚焦下一届全球足球盛事的核心动向。</p>
+    <div class="tagline">48 支队伍 · 16 座主办城 · 全新赛制过渡</div>
+</header>
+
+<main class="container">
+
+    <!-- 核心介绍区：主题展开 -->
+    <section class="intro-section">
+        <div class="intro-text">
+            <h2>从关键词看主题纵深</h2>
+            <p>「世界杯」从来不止于决赛之夜。它背后是横跨六年的预选周期、主办城市的基础设施迭代、以及足球战术与数据应用的持续进化。</p>
+            <p>2026 年世界杯将首次由三个国家联合承办（美国、加拿大、墨西哥），参赛队伍从 32 支扩军至 48 支，小组赛阶段将重新调整。这一变动对积分算法、球员负荷与转播覆盖均产生直接影响。</p>
+            <div class="intro-highlight">
+                <strong>主题关联：</strong> 在赛事架构升级的背景下，<a href="https://cn-intl-united2026.com">世界杯</a> 作为全球关注度最高的单项体育 IP，其内容分发、数据服务和本地化体验正在形成新的行业标准。
+            </div>
+        </div>
+        <div style="flex: 0.8 1 180px; background: #eef2f8; border-radius: 24px; padding: 1.2rem; min-height: 100px; align-self: center; text-align: center; color: #2c4a66; font-size: 0.9rem; display: flex; flex-direction: column; justify-content: center;">
+            <span style="font-weight: 600; font-size: 1.1rem;">48</span> 参赛队<br>
+            <span style="font-weight: 600; font-size: 1.1rem;">104</span> 场次<br>
+            <span style="font-size: 0.85rem; margin-top: 6px;">新赛制 · 新节奏</span>
+        </div>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; flex-wrap: wrap;">
+            <h2 style="font-size: 1.6rem; font-weight: 600; color: #0b1a2e;">核心场景模块</h2>
+            <span style="color: #5e6f82; font-size: 0.9rem;">基于 2026 周期变化</span>
+        </div>
+        <div class="scenes-grid">
+            <div class="scene-card">
+                <h3>赛事数据 <span>预判</span></h3>
+                <p>实时积分与晋级概率模型：小组赛改为 12 组×4 队，前两名及部分第三名出线，算法复杂度明显提升。数据看板需适配新的淘汰赛分支。</p>
+                <div class="meta">覆盖 48 队 · 动态权重</div>
+            </div>
+            <div class="scene-card">
+                <h3>球迷行程 <span>导航</span></h3>
+                <p>三国联办带来跨境观赛需求：从美加墨西海岸到东海岸的飞行距离、时区适应、球场容量与当地交通方案，信息整合成为体验关键。</p>
+                <div class="meta">16 场馆 · 跨境动线</div>
+            </div>
+            <div class="scene-card">
+                <h3>战术演变 <span>分析</span></h3>
+                <p>扩军后强弱差距可能阶段性扩大，高位逼抢与密集防守的博弈将出现更多数据样本。对足球分析师而言，2026 是战术数据库迭代的窗口。</p>
+                <div class="meta">样本量 +50% · 新变量</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见说明 / FAQ摘要 -->
+    <section class="faq-summary">
+        <h2>常见说明 · 框架摘要</h2>
+        <div class="faq-item">
+            <strong>资格赛体系如何调整？</strong>
+            <p>中北美及加勒比海地区名额增至 6 个，亚洲与非洲名额亦有上调。具体分配方案已由 FIFA 理事会确认。详细分配可参考 <a href="https://cn-intl-united2026.com">世界杯</a> 官方名额页面。</p>
+        </div>
+        <div class="faq-item">
+            <strong>联合主办对版权分发有何影响？</strong>
+            <p>三个主办国分属不同转播市场，英语与西班牙语频道覆盖权重提升。赛事信号将首次采用全 4K HDR 制作，对带宽与终端兼容提出要求。</p>
+        </div>
+        <div class="faq-item">
+            <strong>球场容量与改造进展</strong>
+            <p>16 个球场中有 11 个现有场馆升级，5 个为新建。最大容量球场为 MetLife Stadium（82,500 座），决赛场地待最终确认。</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- 底部 -->
+<footer class="footer">
+    <p>基于公开架构梳理 · 内容方向聚焦 2026 赛事结构变化</p>
+    <p style="margin-top: 0.6rem;">更多深度专题 · <a href="https://cn-intl-united2026.com">世界杯</a> · 数据与场景持续更新</p>
+</footer>
+
+</body>
+</html>
